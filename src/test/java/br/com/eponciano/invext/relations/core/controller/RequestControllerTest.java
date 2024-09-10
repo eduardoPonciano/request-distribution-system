@@ -18,6 +18,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.MockitoAnnotations;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
@@ -43,6 +44,7 @@ public class RequestControllerTest {
     @InjectMocks
     private RequestController controller;
 
+    @Autowired
     private MockMvc mockMvc;
 
     @BeforeEach
@@ -79,7 +81,8 @@ public class RequestControllerTest {
 
     @Test
     public void testCreate() throws Exception {
-        Request request = new Request();
+        Request request = getRequestInstance();
+        
         mockMvc.perform(post("/api/request")
             .contentType(MediaType.APPLICATION_JSON)
             .content(asJsonString(request)))
@@ -89,7 +92,7 @@ public class RequestControllerTest {
     @Test
     public void testUpdateRequest_Found() throws Exception {
     	UUID uuid = UUID.randomUUID();
-        Request updatedRequest = new Request();
+    	RequestUpdate updatedRequest = getRequestUpdateInstance();
         when(service.update(eq(uuid.toString()), any(RequestUpdate.class))).thenReturn(true);
 
         mockMvc.perform(put("/api/request/"+uuid.toString())
@@ -104,7 +107,7 @@ public class RequestControllerTest {
 
         mockMvc.perform(put("/api/request/1")
             .contentType(MediaType.APPLICATION_JSON)
-            .content(asJsonString(new Request())))
+            .content(asJsonString(getRequestUpdateInstance())))
             .andExpect(status().isNotFound());
     }
 
@@ -133,5 +136,21 @@ public class RequestControllerTest {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+    }
+    private Request getRequestInstance() {
+    	 Request request = Request.builder()
+    			 .nome("usuario Teste")
+    			 .contato("contato")
+    			 .tipo(SectorEnum.CARD)
+    			 .descricao("descricao").build();    	 
+    	 return request;
+    }
+ 
+    private RequestUpdate getRequestUpdateInstance() {
+    	RequestUpdate updatedRequest = new RequestUpdate();
+        updatedRequest.setIdAtendente(UUID.randomUUID());
+        updatedRequest.setStatus(StatusRequestEnum.PENDENTE);
+        updatedRequest.setTipo(SectorEnum.CARD);
+        return updatedRequest;
     }
 }

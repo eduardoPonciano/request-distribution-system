@@ -14,7 +14,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class RequestUpdate {
-    @NotBlank(message = "idAtendente deve ser informado")
+	@NotNull
     private UUID idAtendente;
     @NotNull(message = "Tipo deve ser informado")
     private SectorEnum tipo;
