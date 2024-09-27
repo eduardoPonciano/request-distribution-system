@@ -35,7 +35,7 @@ Mas dentro do diretorio doc existe uma collecion a ser importada no posmtan para
    
    Execute o comando abaixo para clonar o repositório do projeto
 
-   `git clone https://github.com/eduardoPonciano/invext-relations-distributor.git`
+   `git clone https://github.com/eduardoPonciano/sac-relations-distributor.git`
    
 4. **Compilação e Execução:**
 
