@@ -1,9 +1,9 @@
 # Sistema de Distribuição de Solicitações
 # Descrição
 
-Este projeto foi desenvolvido focado em um prazo de 2 dias para atender o objetivo de distribuir solicitações de clientes para diferentes times de atendimento de acordo com o tipo de solicitação. A solução foi implementada em Java com Spring Boot, dados armazenados em memória e Testes Unitarios.
+Api para atender solicitações de clientes para diferentes times de atendimento de acordo com o tipo de solicitação. A solução foi implementada em Java com Spring Boot, dados armazenados em memória e Testes Unitarios.
 
-O projeto foi desenvolvido com separação de responsabilidade para garantiq eu cada componente tenha uma resposabilidade unica e bem definida. eveitando acoplamento excessivo.
+O projeto foi desenvolvido com separação de responsabilidade para garantir eu cada componente tenha uma resposabilidade unica e bem definida. eveitando acoplamento excessivo.
 
 As classes estão separadas, por camadas de negocio de forma que cuidem apenas das operações relacionadas as suas repectivivas "entidades". mantendo o codigo limpo e organizado
 
@@ -17,9 +17,6 @@ Mas dentro do diretorio doc existe uma collecion a ser importada no posmtan para
   - **Backend**:
   - Java 17
   - Spring Boot
-  - MVC Architecture
-- **Frontend**:
-  - Thymeleaf
 - **Security**:
   - Spring Security
 - **Testes**:
